@@ -101,6 +101,7 @@
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
+      var MyGameInstance = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
@@ -108,6 +109,9 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
+                  
+                  MyGameInstance = unityInstance;
+                  MyGameInstance.SendMessage('Instance', 'GetMessage', 'This text replaced yippee!');
                   unityInstance.SetFullscreen(1);
                 };
               }).catch((message) => {

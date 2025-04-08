@@ -102,6 +102,38 @@
 
       var script = document.createElement("script");
       var MyGameInstance = null;
+
+
+      // Debug Sample player IDS and profile links
+      {
+        let samplePlayerIDs = new Array(7);
+        samplePlayerIDs[0] = "Seunghee";
+        samplePlayerIDs[1] = "Brian";
+        samplePlayerIDs[2] = "Steve";
+        samplePlayerIDs[3] = "Premlatha";
+        samplePlayerIDs[4] = "Steve";
+        samplePlayerIDs[5] = "Angela";
+        samplePlayerIDs[6] = "Matt";
+        let samplePlayerProfiles = new Array(5);
+        samplePlayerProfiles[0] = "https://i.imgur.com/XFw3GFe.jpeg";
+        samplePlayerProfiles[1] = "https://i.imgur.com/xiBp6q4.jpeg";
+        samplePlayerProfiles[2] = "https://i.imgur.com/HeUs6vh.jpeg";
+        samplePlayerProfiles[3] = "https://i.imgur.com/AJDBrLT.jpeg";
+        samplePlayerProfiles[4] = "https://i.imgur.com/UXm7DqB.png";
+      }
+
+      // TODO: Fill in the information based on localStorage
+      var gameRoomName = "test123";
+      var playerID = "";
+      var playerProfile = "";
+
+      // DEBUG setting information
+      {
+        playerID = samplePlayerIDs[Math.floor(Math.random() * 8)];
+        playerProfile = samplePlayerProfiles[Math.floor(Math.random() * 5)];
+      }
+
+
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
@@ -111,6 +143,8 @@
                 
                 MyGameInstance = unityInstance;
                 MyGameInstance.SendMessage('Instance', 'GetMessage', 'This text replaced yippee!');
+                MyGameInstance.SendMessage('Instance', 'JoinLobby', gameRoomName);
+
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };

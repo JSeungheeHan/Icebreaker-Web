@@ -128,7 +128,7 @@
       var playerProfile = "";
 
 
-      
+
       // DEBUG setting information
       {
         playerID = samplePlayerIDs[Math.floor(Math.random() * 8)];
@@ -146,6 +146,8 @@
                 MyGameInstance = unityInstance;
                 MyGameInstance.SendMessage('Instance', 'GetMessage', 'This text replaced yippee!');
                 MyGameInstance.SendMessage('Instance', 'JoinLobby', gameRoomName);
+                MyGameInstance.SendMessage('Instance', 'SetUserID', playerID);
+                MyGameInstance.SendMessage('Instance', 'SetProfilePicture', playerProfile);
 
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);

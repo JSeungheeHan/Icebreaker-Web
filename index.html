@@ -143,13 +143,14 @@
         
         // DEBUG Database Fetching
         {
+          playerID = "asdf"
           const { createClient } = supabase;
           const _supabase = createClient(AUTH_SUPABASE_URL, AUTH_SUPABASE_KEY);
 
           const { data, error } = await _supabase
             .from('users')
             .select('imgUrl')
-            .eq('id', playerID)
+            .eq('name', playerID)
 
           playerProfile = data[0].imgUrl;
           console.log('Supabase Instance: ', data[0].imgUrl);

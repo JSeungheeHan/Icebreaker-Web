@@ -57,10 +57,10 @@
         updateBannerVisibility();
       }
 
-      FetchData();
+      // FetchData();
 
-      async function FetchData()
-      {
+      // async function FetchData()
+      // {
         var buildUrl = "Build";
         var loaderUrl = buildUrl + "/Icebreaker-Web.loader.js";
         var config = {
@@ -140,6 +140,7 @@
           playerProfile = samplePlayerProfiles[Math.floor(Math.random() * 5)];
         }
 
+        /*
         // DEBUG Database Fetching
         {
           const { createClient } = supabase;
@@ -153,6 +154,7 @@
           playerProfile = data[0].imgUrl;
           console.log('Supabase Instance: ', data[0].imgUrl);
         }
+        */
 
 
         script.src = loaderUrl;
@@ -177,7 +179,7 @@
               };
 
         document.body.appendChild(script);
-      }
+      // }
 
     </script>
   </body>

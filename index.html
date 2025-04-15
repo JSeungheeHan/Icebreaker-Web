@@ -101,8 +101,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "1440px";
-        canvas.style.height = "810px";
+        canvas.style.width = "940px";
+        canvas.style.height = "530px";
       }
 
       loadingBar.style.display = "block";
@@ -198,10 +198,12 @@
             .then(async (unityInstance) => {
               loadingBar.style.display = "none";
 
+              /*
               await waitForMessage;
               await callApi();
               MyGameInstance.SendMessage("Instance", "JoinLobby", gameId);
               MyGameInstance.SendMessage("Instance", "SetUserID", username);
+              */
               MyGameInstance.SendMessage(
                 "Instance",
                 "SetProfilePicture",

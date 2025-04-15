@@ -151,10 +151,33 @@
           })
             .then(async (unityInstance) => {
               
-              // console.log("Test Point 2");
+              console.log("Test Point 2");
+              mergeInto(LibraryManager.library, {
+                Hello: function() {
+                  console.log("Hello, this is proof of calling js in C#");
+                },
+
+                UpdateWinner: async function(str) {
+                  const AUTH_SUPABASE_URL = "https://lahdueuocnmtamgybroa.supabase.co";
+                  const AUTH_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhaGR1ZXVvY25tdGFtZ3licm9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDExNjUxMDIsImV4cCI6MjA1Njc0MTEwMn0.X-CgPM3SZ8bHwzU764d8xFC3W9kU0ktYAjpmi5enfX8";
+                  
+                  playerID = "asdf"
+                  const { createClient } = supabase;
+                  const _supabase = createClient(AUTH_SUPABASE_URL, AUTH_SUPABASE_KEY);
+        
+                  const { data, error } = await _supabase
+                    .from('users')
+                    .select('imgUrl')
+                    .eq('name', playerID)
+        
+                  playerProfile = data[0].imgUrl;
+                  console.log('Supabase Instance: ', data[0].imgUrl);
+                },
+              });
+
               loadingBar.style.display = "none";
-              // await waitForMessage;
-              // await callApi();
+              await waitForMessage;
+              await callApi();
               gameId = "test123";
               username = "Seung"
               console.log(gameId);

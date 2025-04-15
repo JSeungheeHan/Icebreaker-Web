@@ -180,6 +180,24 @@
 
         document.body.appendChild(script);
       }
+
+      async function UpdateWinner(str, leadership) {
+        console.log("Calling the html code to update database");
+        const AUTH_SUPABASE_URL = "https://lahdueuocnmtamgybroa.supabase.co";
+        const AUTH_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhaGR1ZXVvY25tdGFtZ3licm9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDExNjUxMDIsImV4cCI6MjA1Njc0MTEwMn0.X-CgPM3SZ8bHwzU764d8xFC3W9kU0ktYAjpmi5enfX8";
+        
+        playerID = str
+        const { createClient } = supabase;
+        const _supabase = createClient(AUTH_SUPABASE_URL, AUTH_SUPABASE_KEY);
+
+        const { data, error } = await _supabase
+        .from('team_members')
+        .update('leadership_score', leadership + 1)
+        .eq('username', playerID)
+
+        playerProfile = data[0].imgUrl;
+        console.log('Supabase Instance: ', data[0].imgUrl);
+      }
     </script>
   </body>
 </html>

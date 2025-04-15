@@ -137,6 +137,8 @@
         }
       }
 
+      console.log("Test Point 1");
+
       FetchData();
 
       async function FetchData() {
@@ -148,6 +150,8 @@
             progressBarFull.style.width = 100 * progress + "%";
           })
             .then(async (unityInstance) => {
+              
+              console.log("Test Point 2");
               loadingBar.style.display = "none";
               await waitForMessage;
               await callApi();

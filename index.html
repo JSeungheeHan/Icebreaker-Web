@@ -11,8 +11,8 @@
     <div id="unity-container" class="unity-desktop">
       <canvas
         id="unity-canvas"
-        width="940"
-        height="530"
+        width="1152"
+        height="648"
         tabindex="-1"
       ></canvas>
       <div id="unity-loading-bar">
@@ -30,7 +30,6 @@
     </div>
     <script type="module" src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-      import { createClient } from '@supabase/supabase-js'
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -102,8 +101,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "940px";
-        canvas.style.height = "530px";
+        canvas.style.width = "1152px";
+        canvas.style.height = "648px";
       }
 
       loadingBar.style.display = "block";
@@ -155,10 +154,10 @@
               console.log("Test Point 2");
 
               loadingBar.style.display = "none";
-              // await waitForMessage;
-              // await callApi();
-              gameId = "test123";
-              username = "Seung"
+              await waitForMessage;
+              await callApi();
+              // gameId = "test123";
+              // username = "Seung"
               console.log(gameId);
               console.log(username);
               MyGameInstance = unityInstance;
@@ -182,9 +181,14 @@
         document.body.appendChild(script);
       }
 
-      async function UpdateWinner(str, leadership) {
+      async function UpdateWinner(first, second, third) {
         
         console.log("Calling the html code to update database");
+        console.log(first + second + third);
+
+        // TODO: Make endpoint for updating who won
+
+        /*
         const AUTH_SUPABASE_URL = "https://lahdueuocnmtamgybroa.supabase.co";
         const AUTH_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhaGR1ZXVvY25tdGFtZ3licm9hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDExNjUxMDIsImV4cCI6MjA1Njc0MTEwMn0.X-CgPM3SZ8bHwzU764d8xFC3W9kU0ktYAjpmi5enfX8";
         
@@ -197,6 +201,7 @@
         .from('team_members')
         .update('leadership_score', leadership + 1)
         .eq('username', playerID)
+        */
       }
     </script>
   </body>
